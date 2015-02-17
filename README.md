@@ -2,30 +2,29 @@
 
 TODO: Write a gem description
 
+## Prerequisites
+
+To use Utify you need some non-ruby apps:
+
+  - youtube-dl
+  - ffmpeg
+
+On OSX you can install them with `brew` and on Ubuntu with `apt-get`.
+
 ## Installation
 
-Add this line to your application's Gemfile:
+Since **Utify** is not yet on RubyGems, you can use it from the repo:
 
-```ruby
-gem 'utify'
 ```
 
-And then execute:
+git clone https://github.com/yadomi/utify && cd utify
 
-    $ bundle
+bundle install
 
-Or install it yourself as:
+./bin/utify
 
-    $ gem install utify
+```
 
 ## Usage
 
 TODO: Write usage instructions here
-
-## Contributing
-
-1. Fork it ( https://github.com/[my-github-username]/utify/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
