@@ -4,15 +4,19 @@ require 'rspotify'
 require 'youtube_search'
 
 class Utify
-  
+  include Version
+
   def searchFromFile(filepath)
     tracks = IO.readlines(filepath)
-
     tracks.each do | track |
-      title = self.get_track(track)
-      video_id = YoutubeSearch.search(title).first['video_id']
-      self.download_track(title, "https://www.youtube.com/watch?v=#{video_id}")
+      self.searchFromURI(track)
     end
+  end
+
+  def searchFromURI(track)
+    title = self.get_track(track)
+    video_id = YoutubeSearch.search(title).first['video_id']
+    self.download_track(title, "https://www.youtube.com/watch?v=#{video_id}")
   end
 
   def get_track(uri)
