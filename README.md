@@ -27,4 +27,8 @@ bundle install
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+
+YOUTUBE_API_KEY=<your_youtube_api_key> ./bin/utify playlist.txt ~/Downloads/
+
+```
