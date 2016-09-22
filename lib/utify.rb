@@ -1,7 +1,6 @@
 require "utify/version"
 
 require 'rspotify'
-require 'youtube_search'
 require 'yourub'
 
 YT = Yourub::Client.new({ developer_key: ENV['YOUTUBE_API_KEY'] })
