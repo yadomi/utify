@@ -2,6 +2,9 @@ require "utify/version"
 
 require 'rspotify'
 require 'youtube_search'
+require 'yourub'
+
+YT = Yourub::Client.new({ developer_key: ENV['YOUTUBE_API_KEY'] })
 
 class Utify
   include Version
@@ -15,8 +18,11 @@ class Utify
 
   def searchFromURI(track)
     title = self.get_track(track)
-    video_id = YoutubeSearch.search(title).first['video_id']
-    self.download_track(title, "https://www.youtube.com/watch?v=#{video_id}")
+    YT.search(query: title,  max_results: 1) do |v|
+      video_id = v['id']
+      self.download_track(title, "https://www.youtube.com/watch?v=#{video_id}")
+    end
+
   end
 
   def get_track(uri)
@@ -26,6 +32,7 @@ class Utify
   end
 
   def download_track(title, clip)
+    puts "Downloading #{title} ..."
     cmd = `youtube-dl --no-progress --extract-audio --audio-format=mp3  --output="#{title}.mp3" #{clip} > /dev/null`
     system(cmd)
   end
